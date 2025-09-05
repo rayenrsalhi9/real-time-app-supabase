@@ -14,7 +14,7 @@ export default function Form() {
                 </div>
                 <div className="form-field">
                     <label htmlFor="value">Value:</label>
-                    <input type="number" id="value" name="value" defaultValue={0} min="0" />
+                    <input type="number" id="value" name="value" defaultValue={0} min="0" step={10} />
                 </div>
                 <button className="submit-btn">Add deal</button>
             </div>

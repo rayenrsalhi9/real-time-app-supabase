@@ -1,5 +1,3 @@
-import React from 'react'
-import supabase from '../supabase-client'
 import { 
     BarChart, 
     Bar, 
@@ -9,47 +7,7 @@ import {
     Tooltip
 } from 'recharts';
 
-async function fetchMetrics(setMetrics) {
-    try {
-        const {error, data} = await supabase
-            .from('sales_deals')
-            .select(
-                `
-                name,
-                value.sum()
-                `,
-            )
-        if (error) throw error
-        setMetrics(data)
-    } catch(err) {
-        console.log(`Error fetching metrics: ${err}`)
-    }
-}
-
-export default function Dashboard() {
-
-    const [metrics, setMetrics] = React.useState([])
-
-    React.useEffect(() => {
-
-        fetchMetrics(setMetrics)
-
-        const channel = supabase
-            .channel('deal-changes')
-            .on(
-                'postgres_changes',
-                { 
-                event: '*',
-                schema: 'public', 
-                table: 'sales_deals' 
-                },
-                () => {
-                    fetchMetrics(setMetrics)
-                })
-            .subscribe();
-
-        return () => supabase.removeChannel(channel);
-    }, [])
+export default function Dashboard({metrics}) {
 
     const chartData = metrics.map(m => (
         {
