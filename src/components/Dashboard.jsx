@@ -31,7 +31,24 @@ export default function Dashboard() {
     const [metrics, setMetrics] = React.useState([])
 
     React.useEffect(() => {
+
         fetchMetrics(setMetrics)
+
+        const channel = supabase
+            .channel('deal-changes')
+            .on(
+                'postgres_changes',
+                { 
+                event: '*',
+                schema: 'public', 
+                table: 'sales_deals' 
+                },
+                (payload) => {
+                    console.log(payload)
+                })
+            .subscribe();
+
+        return () => supabase.removeChannel(channel);
     }, [])
 
     const chartData = metrics.map(m => (
