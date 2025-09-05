@@ -44,7 +44,7 @@ export default function Dashboard() {
                 table: 'sales_deals' 
                 },
                 (payload) => {
-                    console.log(payload)
+                    fetchMetrics(setMetrics)
                 })
             .subscribe();
 
