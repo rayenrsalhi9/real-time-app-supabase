@@ -1,10 +1,18 @@
+import supabase from '../supabase-client'
+
 export default function Form({metrics}) {
 
-    function addDeal(formData) {
+    async function addDeal(formData) {
         const name = formData.get('name')
         const value = formData.get('value')
-        console.log(name)
-        console.log(value)
+
+        const newDeal = {name, value}
+
+        const {error} = await supabase
+            .from('sales_deals')
+            .insert(newDeal)
+        if (error) return new Error('Failed to add deal')
+        return 'Deal added successfully'
     }
 
     return (
