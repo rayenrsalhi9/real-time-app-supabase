@@ -1,7 +1,7 @@
 import React from 'react'
 import supabase from '../supabase-client'
 
-async function fetchMetrics() {
+async function getHighestDeal() {
     const response = await supabase
         .from('sales_deals')
         .select(
@@ -12,6 +12,18 @@ async function fetchMetrics() {
         )
         .order('value', { ascending: false })
         .limit(1)
+    console.log(response)
+}
+
+async function fetchMetrics() {
+    const response = await supabase
+        .from('sales_deals')
+        .select(
+            `
+            name,
+            value.sum()
+            `,
+        )
     console.log(response)
 }
 
