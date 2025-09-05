@@ -43,7 +43,7 @@ export default function Dashboard() {
                 schema: 'public', 
                 table: 'sales_deals' 
                 },
-                (payload) => {
+                () => {
                     fetchMetrics(setMetrics)
                 })
             .subscribe();
