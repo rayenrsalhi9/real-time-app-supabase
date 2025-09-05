@@ -1,7 +1,10 @@
 export default function Form({metrics}) {
 
-    function addDeal() {
-        console.log('form submitted')
+    function addDeal(formData) {
+        const name = formData.get('name')
+        const value = formData.get('value')
+        console.log(name)
+        console.log(value)
     }
 
     return (
