@@ -14,8 +14,7 @@ async function fetchMetrics(setMetrics) {
         if (error) throw error
         setMetrics(data)
     } catch(err) {
-        console.log(err)
-        throw err
+        console.log(`Error fetching metrics: ${err}`)
     }
 }
 
