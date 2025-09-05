@@ -1,9 +1,11 @@
-import React from 'react'
+import Header from "./components/Header"
+import Dashboard from "./components/Dashboard"
 
 export default function App() {
   return (
     <div className="container">
-      <h1>Hello react!</h1>
+      <Header />
+      <Dashboard />
     </div>
   )
 }
