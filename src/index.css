@@ -78,3 +78,16 @@ form .submit-btn {
 form .submit-btn:hover {
     background-color: #013318;
 }
+
+@media(max-width: 687px) {
+    .form-content {
+        flex-direction: column;
+        gap: 1em;
+    }
+    .submit-btn,.form-field, input {
+        width: 100%;
+    }
+    input {
+        margin-top: .5em;
+    }
+}
