@@ -5,7 +5,8 @@ import {
     Bar, 
     XAxis, YAxis, 
     CartesianGrid, 
-    ResponsiveContainer 
+    ResponsiveContainer,
+    Tooltip
 } from 'recharts';
 
 async function fetchMetrics(setMetrics) {
@@ -69,6 +70,15 @@ export default function Dashboard() {
                     />
                     <YAxis 
                         domain={[0, getYAxisMax()]}
+                    />
+                    <Tooltip 
+                        formatter={(value) => [`$${value.toLocaleString()}`, 'Sales']}
+                        labelStyle={{ color: '#333' }}
+                        contentStyle={{ 
+                            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                            border: '1px solid #ccc',
+                            borderRadius: '4px'
+                        }}
                     />
                     <Bar 
                         dataKey="value" 

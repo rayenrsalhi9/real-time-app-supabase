@@ -29,6 +29,6 @@ main .title {
 
 .chart-container {
     width: 100%;
-    max-width: 600px;
+    margin: 0 auto;
     height: 350px;
 }
