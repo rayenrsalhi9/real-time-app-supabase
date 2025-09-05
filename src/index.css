@@ -57,7 +57,7 @@ form label {
     margin-right: .5em;
 }
 
-form input {
+form input, select {
     padding: .5em 1em;
     border: 1px solid #004b23;
     border-radius: 6px;

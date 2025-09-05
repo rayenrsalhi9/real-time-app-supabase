@@ -1,4 +1,4 @@
-export default function Form() {
+export default function Form({metrics}) {
 
     function addDeal() {
         console.log('form submitted')
@@ -10,7 +10,11 @@ export default function Form() {
             <div className="form-content">
                 <div className="form-field">
                     <label htmlFor="name">Name:</label>
-                    <input type="text" id="name" name="name" />
+                    <select name="name" id="name">
+                        {metrics.map(m => (
+                            <option key={m.name} value={m.name}>{m.name}</option>
+                        ))}
+                    </select>
                 </div>
                 <div className="form-field">
                     <label htmlFor="value">Value:</label>
