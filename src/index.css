@@ -155,6 +155,10 @@ main .title,
     border: 1px solid #D1D5DB;
 }
 
+.auth-form .form-field input.error {
+    border-color: #dc2626;
+}
+
 .auth-form .submit-btn {
     display: block;
     margin-top: 2em;

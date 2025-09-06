@@ -28,11 +28,11 @@ export default function Login() {
           {error ? <p className="auth-error-msg">{error}</p> : null}
           <div className="form-field">
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="example@domain.com" required />
+            <input type="email" id="email" name="email" className={error ? 'error' : ''} placeholder="example@domain.com" required />
           </div>
           <div className="form-field">
             <label htmlFor="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="********" required />
+            <input type="password" id="password" name="password" className={error ? 'error' : ''} placeholder="********" required />
           </div>
         </div>
         <button className="submit-btn" type="submit" disabled={state === 'submitting'}>
