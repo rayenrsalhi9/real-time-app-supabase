@@ -16,3 +16,13 @@ export async function fetchMetrics(setMetrics) {
         console.log(`Error fetching metrics: ${err}`)
     }
 }
+
+export async function getInitialSession(setSession) {
+    try {
+        const {data, error} = await supabase.auth.getSession()
+        if (error) throw error
+        setSession(data.session)
+    } catch(err) {
+        console.log(`Error fetching initial session: ${err}`)
+    }
+}

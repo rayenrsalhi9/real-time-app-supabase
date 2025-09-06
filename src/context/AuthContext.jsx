@@ -1,10 +1,15 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
+import { getInitialSession } from "../utils";
 
 const AuthContext = createContext()
 
 export const AuthContextProvider = ({children}) => {
-    const [session, _] = useState(undefined)
+    const [session, setSession] = useState(undefined)
+
+    useEffect(() => {
+        getInitialSession(setSession)
+    }, [])
 
     return(
         <AuthContext.Provider value={{session}}>
