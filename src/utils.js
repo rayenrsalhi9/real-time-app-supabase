@@ -42,3 +42,16 @@ export async function signInUser(email, password) {
     return 'Unexpected error when authenticating'
   }
 }
+
+export async function signOutUser() {
+    try {
+        const {error} = await supabase.auth.signOut()
+        if (error) {
+            console.log(`Error signing out: ${error.message}`)
+            throw error.message
+        }
+    } catch(err) {
+        console.log(err)
+        throw err
+    }
+}

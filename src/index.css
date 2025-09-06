@@ -28,9 +28,31 @@ main, header, .new-deal-form, .content-wrapper {
     border-radius: 6px;
 }
 
-header {
+.dashboard-header {
     background-color: #004b23;
     color: #f5f5f5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-header .signout-btn {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    text-wrap: nowrap;
+    gap: .5em;
+    background: none;
+    border: 2px solid #f5f5f5;
+    border-radius: 6px;
+    color: #f5f5f5;
+    padding: .5em 1em;
+    cursor: pointer;
+    transition: .6s ease;
+}
+
+.dashboard-header .signout-btn:hover {
+    background-color: #d1d5db20;
 }
 
 main .title,
@@ -123,9 +145,18 @@ main .title,
     color: #004b23;
 }
 
-.auth-form .form-content .auth-error-msg {
+.auth-form .form-content .auth-error-msg,
+.auth-form .form-content .auth-msg {
     text-align: center;
+    margin-top: 1em;
+}
+
+.auth-form .form-content .auth-error-msg {
     color: #dc2626;
+}
+
+.auth-form .form-content .auth-msg {
+    color: #23c46e;
 }
 
 .auth-form .form-field {
