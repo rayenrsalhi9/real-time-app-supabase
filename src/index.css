@@ -13,17 +13,17 @@
     margin: 0 auto;
 }
 
-main, header, form, .content-wrapper {
+main, header, .new-deal-form, .content-wrapper {
     padding: 1em 2em;
 }
 
 @media(max-width: 576px) {
-    main, header, form, .content-wrapper {
+    main, header, .new-deal-form, .content-wrapper {
         padding: 1em;
     }
 }
 
-form, main {
+.new-deal-form, main {
     background-color: #f5f5f5;
     border-radius: 6px;
 }
@@ -106,4 +106,73 @@ main .title,
     color: #004b23;
     padding: 1em 2em;
     border-bottom: 1px solid lightgray;
+    text-align: center;
+}
+
+.auth-form {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 1em 2em;
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-form .form-field {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.auth-form .form-field label {
+    font-weight: 600;
+    color: #00190c;
+    margin-bottom: .25em;
+}
+
+.auth-form .form-field label:nth-of-type(1) {
+    margin-top: 1em;
+}
+
+.auth-form .form-field input,
+.auth-form .submit-btn {
+    border-radius: 6px;
+}
+
+.auth-form .form-field input {
+    padding: .75em 1.125em;
+    margin-top: .5em;
+    border: 1px solid #D1D5DB;
+}
+
+.auth-form .submit-btn {
+    display: block;
+    margin-top: 2em;
+    padding: 1em 2em;
+    border: none;
+    background-color: #004b23;
+    color: #f5f5f5;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .6s ease;
+}
+
+.auth-form .submit-btn:hover {
+    background-color: #013318;
+    color: white;
+}
+
+.auth-form .signup-cta {
+    margin-top: 2em;
+    text-align: center;
+}
+
+.auth-form .signup-cta a {
+    font-weight: 600;
+    color: #004b23;
+    transition: .6s ease;
+}
+
+.auth-form .signup-cta a:hover {
+    color: #00190c;
 }

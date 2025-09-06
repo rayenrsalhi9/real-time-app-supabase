@@ -1,4 +1,4 @@
-import { Form } from "react-router-dom"
+import { Form, Link } from "react-router-dom"
 
 export default function Login() {
   return (
@@ -10,18 +10,18 @@ export default function Login() {
         <div className="form-content">
           <div className="form-field">
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" name="email" />
+            <input type="email" id="email" name="email" placeholder="example@domain.com" />
           </div>
           <div className="form-field">
             <label htmlFor="password">Password</label>
-            <input type="password" id="password" name="password" />
+            <input type="password" id="password" name="password" placeholder="********" />
           </div>
         </div>
         <button className="submit-btn" type="submit">
           Login
         </button>
         <p className="signup-cta">
-          Don't have an account? Signup
+          Don't have an account? <Link to="/signup">Signup</Link>
         </p>
       </Form>
     </>
