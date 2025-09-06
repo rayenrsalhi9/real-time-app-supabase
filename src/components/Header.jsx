@@ -20,13 +20,17 @@ export default function Header() {
   return (
     <header className='dashboard-header'>
         <h1>Sales Team Dashboard</h1>
-        <div className="dashboard-header-lower-section">
-          <p>{session?.user?.email}</p>
-          <button className='signout-btn' onClick={handleClick}>
-            <LogOut />
-            Sign out
-          </button>
-        </div>
+        {
+          session ?
+          <div className="dashboard-header-lower-section">
+            <p>{session?.user?.email}</p>
+            <button className='signout-btn' onClick={handleClick}>
+              <LogOut />
+              Sign out
+            </button>
+          </div> : 
+          null
+        }
     </header>
   )
 }
