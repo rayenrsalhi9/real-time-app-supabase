@@ -13,7 +13,6 @@ export const AuthContextProvider = ({children}) => {
         supabase.auth.onAuthStateChange((_event, session) => {
             setSession(session)
         })
-        return () => supabase.auth.removeOnAuthStateChange()
     }, [])
 
     return(
