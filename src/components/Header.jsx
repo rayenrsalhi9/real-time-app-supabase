@@ -11,7 +11,7 @@ export default function Header() {
   async function handleClick() {
     try {
       await signOutUser()
-      navigate('/')
+      navigate('/signin')
     } catch (error) {
       console.log('Error signing out:', error)
     }
