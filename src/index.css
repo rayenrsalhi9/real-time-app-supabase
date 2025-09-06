@@ -176,3 +176,10 @@ main .title,
 .auth-form .signup-cta a:hover {
     color: #00190c;
 }
+
+@media(max-width: 687px) {
+    .login-header, .auth-form {
+        padding: 1em;
+    }
+    
+}
