@@ -118,6 +118,10 @@ main .title,
     flex-direction: column;
 }
 
+.auth-form .form-content h2 {
+    color: #004b23;
+}
+
 .auth-form .form-field {
     display: flex;
     flex-direction: column;
@@ -155,6 +159,11 @@ main .title,
     font-weight: 600;
     cursor: pointer;
     transition: .6s ease;
+}
+
+.auth-form .submit-btn:disabled {
+    opacity: .8;
+    cursor: not-allowed;
 }
 
 .auth-form .submit-btn:hover {
