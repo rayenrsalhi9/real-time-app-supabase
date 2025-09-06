@@ -1,4 +1,14 @@
+/* eslint-disable react-refresh/only-export-components */
 import { Form, Link } from "react-router-dom"
+
+export async function action({request}) {
+  const formData = await request.formData()
+  const email = formData.get('email')
+  const password = formData.get('password')
+  console.log('Data submitted')
+  console.log(email)
+  console.log(password)
+}
 
 export default function Login() {
   return (
@@ -6,7 +16,7 @@ export default function Login() {
       <header className='login-header'>
         <h1>Paper like a boss</h1>
       </header>
-      <Form className="auth-form">
+      <Form className="auth-form" method="post">
         <div className="form-content">
           <div className="form-field">
             <label htmlFor="email">Email</label>
