@@ -1,6 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState, useEffect } from "react";
 import { getInitialSession } from "../utils";
+import supabase from "../supabase-client";
 
 const AuthContext = createContext()
 
@@ -9,6 +10,10 @@ export const AuthContextProvider = ({children}) => {
 
     useEffect(() => {
         getInitialSession(setSession)
+        supabase.auth.onAuthStateChange((_event, session) => {
+            setSession(session)
+        })
+        return () => supabase.auth.removeOnAuthStateChange()
     }, [])
 
     return(
