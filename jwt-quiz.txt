@@ -1,0 +1,37 @@
+Challenge (delete 2 options to leave your answer)
+
+Multiple choice quiz:
+
+1. Which part of the JWT includes the role of either authenticated or anon?
+ 
+    A) HEADER
+    B) PAYLOAD x
+    C) SIGNATURE
+
+
+2. How does Supabase know the JWT is authentic (not forged)?
+
+    A) It checks that the request was sent to the correct project URL
+    B) It verifies the JWT's signature was created with the project's secret x
+    C) It confirms the user's password matches the database
+
+
+3. What does the JWT signature prove?
+
+    A) That the JWT hasn't been tampered with and came from a trusted source x
+    B) The user's identity and permissions
+    C) The expiration time of the token
+
+
+4. In our castle metaphor, what represents the project secret?
+
+    A) The castle guards
+    B) The member's certificate 
+    C) The castle's secret pen x
+
+
+5. What's the main difference between an anon JWT and an authenticated JWT?
+
+    A) The role field in the payload is different x
+    B) Anon JWTs don't have signatures
+    C) Authenticated JWTs use a different project secret
