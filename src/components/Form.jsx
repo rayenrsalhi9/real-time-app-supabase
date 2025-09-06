@@ -16,7 +16,7 @@ export default function Form({metrics}) {
     }
 
     return (
-        <form action={addDeal}>
+        <form action={addDeal} className='new-deal-form'>
             <h2 className="form-title">Add new sales deal</h2>
             <div className="form-content">
                 <div className="form-field">
