@@ -1,18 +1,39 @@
 /* eslint-disable react-refresh/only-export-components */
-import { Form, Link, useNavigation } from "react-router-dom"
+import { Form, Link, redirect, useNavigation, useActionData } from "react-router-dom"
+import supabase from "../supabase-client"
 
 export async function action({request}) {
   const formData = await request.formData()
+  // 1. extract form data
   const email = formData.get('email')
   const password = formData.get('password')
-  console.log('Data submitted')
-  console.log(email)
-  console.log(password)
+  
+  // 2. call the sign in function directly
+  try {
+    const {data, error} = await supabase.auth
+      .signInWithPassword({email: email.toLowerCase(), password})
+    
+    // 3. handle known errors
+    if (error) {
+      console.log('An error occurred when signing in: ', error.message)
+      return error.message
+    }
+    // 4. handle success
+    if (data?.session) {
+      console.log('Login success', data)
+      return redirect('/dashboard')
+    }
+    
+  } catch(err) {
+    console.log(`Unexpected error when authenticating: ${err.message}`)
+    return 'Unexpected error when authenticating'
+  }
 }
 
 export default function Login() {
 
   const {state} = useNavigation()
+  const error = useActionData()
 
   return (
     <>
@@ -22,6 +43,7 @@ export default function Login() {
       <Form className="auth-form" method="post" replace>
         <div className="form-content">
           <h2>Sign in</h2>
+          {error ? <p className="auth-error-msg">{error}</p> : null}
           <div className="form-field">
             <label htmlFor="email">Email</label>
             <input type="email" id="email" name="email" placeholder="example@domain.com" required />

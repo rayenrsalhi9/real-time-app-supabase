@@ -119,7 +119,13 @@ main .title,
 }
 
 .auth-form .form-content h2 {
+    margin-top: 1em;
     color: #004b23;
+}
+
+.auth-form .form-content .auth-error-msg {
+    text-align: center;
+    color: #dc2626;
 }
 
 .auth-form .form-field {
