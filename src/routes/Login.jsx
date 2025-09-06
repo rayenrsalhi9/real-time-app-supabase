@@ -4,7 +4,6 @@ import {
   Link, 
   useNavigation, 
   useActionData, 
-  useLoaderData 
 } from "react-router-dom"
 import { signInUser } from "../utils"
 
@@ -18,17 +17,10 @@ export async function action({request}) {
   return signInUser(email, password)
 }
 
-export async function loader({request}) {
-  const url = new URL(request.url)
-  const message = url.searchParams.get('message')
-  return message
-}
-
 export default function Login() {
 
   const {state} = useNavigation()
   const error = useActionData()
-  const message = useLoaderData()
 
   return (
     <>
@@ -38,14 +30,7 @@ export default function Login() {
       <Form className="auth-form" method="post" replace>
         <div className="form-content">
           <h2>Sign in</h2>
-          {
-            error 
-            ? <p className="auth-error-msg">{error}</p>
-            : message 
-            ? <p className="auth-msg">{message}</p>
-            : null
-              
-          }
+          {error ? <p className="auth-error-msg">{error}</p> : null}
           <div className="form-field">
             <label htmlFor="email">Email</label>
             <input type="email" id="email" name="email" className={error ? 'error' : ''} placeholder="example@domain.com" required />

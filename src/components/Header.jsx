@@ -9,7 +9,7 @@ export default function Header() {
   async function handleClick() {
     try {
       await signOutUser()
-      navigate('/?message=Successfully signed out')
+      navigate('/')
     } catch (error) {
       console.log('Error signing out:', error)
     }
