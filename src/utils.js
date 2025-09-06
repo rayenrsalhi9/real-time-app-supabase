@@ -1,4 +1,5 @@
 import supabase from "./supabase-client"
+import { redirect } from "react-router-dom"
 
 export async function fetchMetrics(setMetrics) {
     try {
@@ -25,4 +26,26 @@ export async function getInitialSession(setSession) {
     } catch(err) {
         console.log(`Error fetching initial session: ${err}`)
     }
+}
+
+export async function signInUser(email, password) {
+    try {
+    const {data, error} = await supabase.auth
+      .signInWithPassword({email: email.toLowerCase(), password})
+    
+    // 3. handle known errors
+    if (error) {
+      console.log('An error occurred when signing in: ', error.message)
+      return error.message
+    }
+    // 4. handle success
+    if (data?.session) {
+      console.log('Login success', data)
+      return redirect('/dashboard')
+    }
+    
+  } catch(err) {
+    console.log(`Unexpected error when authenticating: ${err.message}`)
+    return 'Unexpected error when authenticating'
+  }
 }

@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
-import { Form, Link, redirect, useNavigation, useActionData } from "react-router-dom"
-import supabase from "../supabase-client"
+import { Form, Link, useNavigation, useActionData } from "react-router-dom"
+import { signInUser } from "../utils"
 
 export async function action({request}) {
   const formData = await request.formData()
@@ -9,25 +9,7 @@ export async function action({request}) {
   const password = formData.get('password')
   
   // 2. call the sign in function directly
-  try {
-    const {data, error} = await supabase.auth
-      .signInWithPassword({email: email.toLowerCase(), password})
-    
-    // 3. handle known errors
-    if (error) {
-      console.log('An error occurred when signing in: ', error.message)
-      return error.message
-    }
-    // 4. handle success
-    if (data?.session) {
-      console.log('Login success', data)
-      return redirect('/dashboard')
-    }
-    
-  } catch(err) {
-    console.log(`Unexpected error when authenticating: ${err.message}`)
-    return 'Unexpected error when authenticating'
-  }
+  return signInUser(email, password)
 }
 
 export default function Login() {
