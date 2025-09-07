@@ -43,6 +43,10 @@ main, header, .new-deal-form, .content-wrapper {
     color: #d1d5db;
 }
 
+.dashboard-header .error-msg {
+    color: red;
+}
+
 .dashboard-header .signout-btn {
     display: flex;
     align-items: center;
