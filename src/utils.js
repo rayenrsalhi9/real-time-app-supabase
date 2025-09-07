@@ -12,7 +12,6 @@ export async function fetchMetrics(setMetrics) {
                 `,
             )
         if (error) throw error
-        console.table(data)
         setMetrics(data)
     } catch(err) {
         console.log(`Error fetching metrics: ${err}`)
