@@ -4,15 +4,15 @@ import {
   useNavigation, 
   useActionData, 
 } from "react-router-dom"
+import { signUpUser } from "../utils"
 
 export async function action({request}) {
   const formData = await request.formData()
   // 1. extract form data
   const email = formData.get('email')
   const password = formData.get('password')
-  console.log(email, password)
   
-  return null
+  return signUpUser(email, password)
 }
 
 export default function Login() {

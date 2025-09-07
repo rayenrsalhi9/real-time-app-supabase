@@ -43,6 +43,21 @@ export async function signInUser(email, password) {
   }
 }
 
+export async function signUpUser(email, password) {
+    try {
+        const {data, error} = await supabase.auth.signUp({
+            email: email.trim().toLowerCase(),
+            password
+        })
+        if (error) return error.message
+        if (data?.session) return redirect('/dashboard')
+        return 'Unexpected error during signing up.'
+    } catch(err) {
+        console.log('Error signing up: ', err.message)
+        return 'Unexpected error during signing up.'
+    }
+}
+
 export async function signOutUser() {
     try {
         const {error} = await supabase.auth.signOut()

@@ -5,7 +5,7 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 
 import Dashboard from "./routes/Dashboard";
 import Login, { action as loginAction } from "./routes/Login";
-import Signup from './routes/Signup'
+import Signup, {action as signupAction} from './routes/Signup'
 
 export const router = createBrowserRouter([
     {
@@ -17,7 +17,8 @@ export const router = createBrowserRouter([
         action: loginAction
     }, {
         path: '/signup',
-        element: <Signup />
+        element: <Signup />,
+        action: signupAction
     }, {
         path: '/dashboard',
         element: (
