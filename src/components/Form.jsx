@@ -2,7 +2,9 @@ import supabase from '../supabase-client'
 
 export default function Form({metrics}) {
 
-    async function addDeal(formData) {
+    async function handleSubmit(event) {
+        event.preventDefault()
+        const formData = new FormData(event.target)
         const name = formData.get('name')
         const value = formData.get('value')
 
@@ -11,12 +13,17 @@ export default function Form({metrics}) {
         const {error} = await supabase
             .from('sales_deals')
             .insert(newDeal)
-        if (error) return new Error('Failed to add deal')
-        return 'Deal added successfully'
+        if (error) {
+            console.error('Failed to add deal:', error)
+            return
+        }
+        
+        // Reset form after successful submission
+        event.target.reset()
     }
 
     return (
-        <form action={addDeal} className='new-deal-form'>
+        <form onSubmit={handleSubmit} className='new-deal-form'>
             <h2 className="form-title">Add new sales deal</h2>
             <div className="form-content">
                 <div className="form-field">
